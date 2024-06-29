@@ -1,0 +1,50 @@
+#include <iostream>
+
+// Define the structure for a node in the singly linked list
+struct Node {
+    int data;
+    Node* next;
+};
+
+// Define the singly linked list class
+class SinglyLinkedList {
+private:
+    Node* head;
+
+public:
+    // Constructor to initialize the head of the list
+    SinglyLinkedList() : head(nullptr) {}
+
+    // Method to insert a new node at the beginning of the list
+    void insertAtBeginning(int value) {
+        Node* newNode = new Node;
+        newNode->data = value;
+        newNode->next = head;
+        head = newNode;
+    }
+
+    // Method to display the elements of the list
+    void displayList() {
+        Node* temp = head;
+        while (temp != nullptr) {
+            std::cout << temp->data << " -> ";
+            temp = temp->next;
+        }
+        std::cout << "nullptr" << std::endl;
+    }
+};
+
+int main() {
+    // Create a singly linked list
+    SinglyLinkedList myList;
+
+    // Insert elements into the list
+    myList.insertAtBeginning(3);
+    myList.insertAtBeginning(2);
+    myList.insertAtBeginning(1);
+
+    // Display the list
+    myList.displayList();
+
+    return 0;
+}
